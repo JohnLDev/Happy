@@ -1,5 +1,5 @@
 <h1 align="center" >
-  <img alt="happy" title="happy" src="./assets/banner.png" />
+  <img alt="happy" title="happy" src="./front-end/src/images/logo.svg" />
 </h1>
 
 <p align="center">Leve felicidade para o mundo, visite orfanatos e mude o dia de muitas crianças. NLW#3</p>
@@ -66,7 +66,7 @@ Entre na pasta
 
 ```bash
 
-$ cd web
+$ cd front-end
 
 ```
 Instale as dependências
