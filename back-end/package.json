@@ -5,13 +5,24 @@
   "license": "MIT",
   "scripts": {
     "build": "tsc",
-    "dev:server": "ts-node-dev --transpile-only --inspect --ignore-watch node_modules src/server.ts"
+    "dev:server": "ts-node-dev --transpile-only --inspect --ignore-watch node_modules src/server.ts",
+    "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js"
   },
   "dependencies": {
-    "express": "^4.17.1"
+    "@types/yup": "^0.29.8",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-async-errors": "^3.1.1",
+    "multer": "^1.4.2",
+    "pg": "^8.4.1",
+    "typeorm": "^0.2.28",
+    "yup": "^0.29.3"
   },
   "devDependencies": {
+    "@types/cors": "^2.8.8",
     "@types/express": "^4.17.8",
+    "@types/multer": "^1.4.4",
     "@typescript-eslint/eslint-plugin": "^4.1.1",
     "@typescript-eslint/parser": "^4.1.1",
     "eslint": "^7.9.0",
