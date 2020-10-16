@@ -53,7 +53,7 @@ Este projeto foi construído durante a terceira edição do evento Next Level We
 
 ```bash
 
-$ git clone https://github.com/heyloh/happy.git
+$ git clone https://github.com/johnldev/happy
 
 # entre na pasta do projeto
 
