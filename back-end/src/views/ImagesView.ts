@@ -8,7 +8,7 @@ export default {
   render(image: Image): Response {
     return {
       id: image.id,
-      path: `http://localhost:3333/uploads/${image.path}`,
+      path: `http://172.22.138.1:3333/uploads/${image.path}`,
     }
   },
   renderMany(images: Image[]): Response[] {

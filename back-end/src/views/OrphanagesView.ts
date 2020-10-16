@@ -13,6 +13,7 @@ interface Response {
   about: string
   instructions: string
   opening_hours: string
+  whatsapp: number
   open_on_weekends: boolean
   images: ResponseImage[]
 }
@@ -26,6 +27,7 @@ export default {
       about: orphanage.about,
       instructions: orphanage.instructions,
       opening_hours: orphanage.opening_hours,
+      whatsapp: orphanage.whatsapp,
       open_on_weekends: orphanage.open_on_weekends,
       images: ImagesView.renderMany(orphanage.images),
     }

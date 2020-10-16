@@ -18,6 +18,7 @@ const CreateOrphanage: React.FC = () => {
   const [about, setAbout] = useState('')
   const [instructions, setInstructions] = useState('')
   const [opening_hours, setOpeningHours] = useState('')
+  const [whatsApp, setWhatsApp] = useState('')
   const [open_on_weekends, setOpenOnWeekends] = useState(true)
   const [images, setImages] = useState<File[]>([])
   const [previewImages, setPreviewImages] = useState<string[]>([])
@@ -58,6 +59,7 @@ const CreateOrphanage: React.FC = () => {
     data.append('longitude', String(longitude))
     data.append('instructions', instructions)
     data.append('opening_hours', opening_hours)
+    data.append('whatsapp', whatsApp)
     data.append('open_on_weekends', String(open_on_weekends))
     images.forEach(image => {
       data.append('images', image)
@@ -155,6 +157,17 @@ const CreateOrphanage: React.FC = () => {
                 id='opening_hours'
                 value={opening_hours}
                 onChange={({ target: { value } }) => setOpeningHours(value)}
+              />
+            </div>
+
+            <div className='input-block'>
+              <label htmlFor='whatsapp'>WhatsApp</label>
+              <input
+                id='whatsapp'
+                value={whatsApp}
+                onChange={({ target: { value } }) => setWhatsApp(value)}
+                type='number'
+                maxLength={11}
               />
             </div>
 
