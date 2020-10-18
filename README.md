@@ -105,7 +105,23 @@ Caso queira, vá para a seção do <a href="#-mapbox">Mapbox</a>.
 
 ### 🌐 Rodando o Servidor
 
-> Em breve...
+### Antes de começar
+
+1. Instale o postgresSQL localmente(Não recomendado) ou através do docker(Recomendado);
+  *  Caso opte por instalar o docker este é um tutorial de instalação para todos os sistemas operacionais;
+
+  [![Docker](https://www.ortussolutions.com/__media/logos/docker.png)](https://www.notion.so/Instala-o-do-Docker-8230846ae2c547b2988f2aca91fc1edf)
+
+
+3. Com o docker instalado será necessário criar um container para isso devemos digitar no terminal:
+`docker run --name nome_do_container -e POSTGRES_PASSWORD=senha_que_será_usada_no_.env -p 5432:5432  -d postgres`
+o retorno será o nome do container caso o comando tenha sucesso;
+4. Com o container criado, o proximo passo é acessar o banco de dados através de um software de sua escolha(recomendo dbeaver) e criar uma database e guarde o nome pois ele será utilizado no .env
+5. Agora com o repositório clonado você deverá criar um arquivo .env na raiz do projeto utilizando como exemplo o arquivo .env-exemple;
+6. Instale as dependências utilizando o npm ou o yarn: `npm install` ou ` yarn`;
+7. Vamos rodar as migrações para deixar seu banco de dados no formato correto, digite no console:
+ `yarn typeorm migration:run` ou `npm run dev:server` e todas as migrações devem ser rodadas e está tudo pronto para os testes.
+8. Por ultimo, é só iniciar a api digitando no console:`yarn dev:server` ou `npm run dev:server
 
 ### 📱 Rodando o Happy mobile 
 
