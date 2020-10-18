@@ -1,0 +1,65 @@
+#created-page{
+
+  width:100vw;
+  height:100vh;
+
+  background:#37C77F;
+  display:flex;
+  align-items:center;
+  justify-content: center;
+
+}
+
+#created-page .createdtext{
+  display:flex;
+  flex-direction:column;
+  justify-content: center;
+  align-items: center;
+  width:55%;
+
+}
+
+#created-page .createdtext h1{
+  line-height:80px;
+  font-weight:800;
+  font-size: 70px;
+
+ margin-bottom:15px;
+}
+
+#created-page .createdtext p{
+  line-height:34px;
+  font-size: 18px;
+
+ margin-bottom:30px;
+
+ width: 300px;
+ display:flex;
+ text-align: center;
+
+}
+
+#created-page .createdtext button{
+  border:0;
+  border-radius: 20px;
+
+  width:243px;
+  height: 64px;
+
+  background:#31B272;
+  color:#fff;
+  cursor:pointer;
+  transition: background-color 0.2s;
+
+
+}
+
+#created-page .createdtext button:hover{
+  background:#3BD689;
+}
+
+#created-page .happygirl{
+  display:flex;
+  align-items:flex-start;
+  width: 45%;
+}

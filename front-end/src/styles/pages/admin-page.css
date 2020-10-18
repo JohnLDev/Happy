@@ -1,0 +1,140 @@
+#admin-landing{
+  display:flex;
+  width:100vw;
+  height:100vh;
+
+
+}
+#admin-landing .page{
+  display:flex;
+  flex-direction: column;
+  margin-left:100px;
+  margin-right: 100px;
+  width:100%;
+
+}
+#admin-landing .header-content{
+  width:100%;
+  display:flex;
+  flex-direction: column;
+}
+#admin-landing .header-content header{
+  display:flex;
+  margin-top: 60px;
+  margin-bottom: 12px;
+  justify-content:space-between;
+  width:100%;
+  align-items: center;
+
+}
+
+#admin-landing .header-content header h1{
+  color: #4D6F80;
+  line-height:34px;
+  font-weight: bold;
+}
+
+#admin-landing .header-content header span{
+  color: #8FA7B2;
+  line-height:22px;
+
+}
+#admin-landing .header-content .line{
+  width: 100%;
+  height: 1px;
+  background-color:#D3E2E5;
+}
+#admin-landing .sidebar {
+  width:100px;
+}
+#admin-landing .page .maps{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  justify-content:space-between;
+
+}
+#admin-landing .container-map
+{
+
+  background: #fff;
+  border: 1px solid #D3E2E5;
+  border-radius: 20px;
+
+  width: 544px;
+  height: 309px;
+  margin-top:30px;
+
+  display: flex;
+  flex-direction:column;
+  align-items: center;
+
+
+}
+
+#admin-landing .container-map .map{
+
+width: 540px;
+height: 227px;
+display: flex;
+align-items: center;
+justify-content: center;
+border-top-left-radius: 20px;
+border-top-right-radius: 20px;
+}
+
+#admin-landing .container-map .info{
+  display:flex;
+  width:90%;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-top: 15px;
+}
+#admin-landing .container-map .info h2{
+  color: #4D6F80;
+  line-height:34px;
+  font-weight:bold;
+}
+#admin-landing .container-map .info .admin-options{
+  display:flex;
+  align-items: center;
+  justify-content: center;
+}
+#admin-landing .container-map .info .admin-options a{
+  height: 48px;
+  width: 48px;
+
+  background:#EBF2F5;
+  border-radius: 14px;
+
+
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s;
+}
+#admin-landing .container-map .info .admin-options a:hover{
+  background:#EBF9F9;
+}
+
+#admin-landing .container-map .info .admin-options button{
+  height: 48px;
+  width: 48px;
+
+  background:#EBF2F5;
+  border-radius: 14px;
+  border: 0;
+
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s;
+
+  cursor: pointer;
+}
+#admin-landing .container-map .info .admin-options button:hover{
+  background:#EBF9F9;
+}
+#admin-landing .container-map .info .admin-options a:first-child{
+  margin-right: 10px;
+}

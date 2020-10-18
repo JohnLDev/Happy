@@ -48,6 +48,11 @@ export class CreateOrphanages1602611480727 implements MigrationInterface {
             type: 'boolean',
             default: false,
           },
+          {
+            name: 'IsAproved',
+            type: 'boolean',
+            default: false,
+          },
         ],
       }),
     )

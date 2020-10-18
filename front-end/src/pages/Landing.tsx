@@ -10,15 +10,23 @@ const Landing: React.FC = () => {
     <>
       <div id='page-landing'>
         <div className='content-wrapper'>
-          <img src={Logo} alt='logo' />
+          <div className='content'>
+            <img src={Logo} alt='logo' />
+            <div className='content-info'>
+              <strong>Pelotas</strong>
+              <span>Rio Grande do Sul</span>
+            </div>
+          </div>
+
           <main>
             <h1>Leve felicidade para o mundo</h1>
             <p>Visite orfanatos e mude o dia de muitas crianças.</p>
           </main>
 
           <div className='location'>
-            <strong>Pelotas </strong>
-            <span>Rio Grande do Sul</span>
+            <Link to='/loginpage' className='restrict'>
+              Acesso restrito
+            </Link>
           </div>
 
           <Link to='/orphanages' className='enter-app'>

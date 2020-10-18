@@ -1,0 +1,61 @@
+#exclude-page{
+
+  width:100vw;
+  height:100vh;
+
+  background:#FF669D;
+  display:flex;
+  align-items:center;
+  justify-content: center;
+
+}
+
+#exclude-page .excludetext{
+  display:flex;
+  flex-direction:column;
+  justify-content: center;
+  align-items: center;
+  width:55%;
+
+}
+
+#exclude-page .excludetext h1{
+  line-height:80px;
+  font-weight:800;
+  font-size: 70px;
+
+ margin-bottom:15px;
+}
+
+#exclude-page .excludetext p{
+  line-height:34px;
+  font-size: 18px;
+
+ margin-bottom:30px;
+
+}
+
+#exclude-page .excludetext button{
+  border:0;
+  border-radius: 20px;
+
+  width:243px;
+  height: 64px;
+
+  background:#D6487B;
+
+  cursor:pointer;
+  transition: background-color 0.2s;
+
+
+}
+
+#exclude-page .excludetext button:hover{
+  background:#D64f5f;
+}
+
+#exclude-page .sadgirl{
+  display:flex;
+  align-items:flex-start;
+  width: 45%;
+}

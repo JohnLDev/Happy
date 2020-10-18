@@ -9,10 +9,52 @@ aside.app-sidebar {
   justify-content: space-between;
   align-items: center;
 }
+aside.app-sidebar .admin-options {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 120px;
 
+}
+aside.app-sidebar .admin-options button {
+  display: flex;
+  justify-content: center;
+  align-items:center;
+
+  height: 48px;
+  width: 48px;
+
+  border: 0;
+  border-radius:13px;
+  background:#12AFCB;
+  cursor: pointer;
+  transition: background-color 0.2s;
+
+}
+aside.app-sidebar .admin-options button:hover{
+  background: #17D6EB;
+}
+
+aside.app-sidebar .admin-options  #active {
+  display: flex;
+  justify-content: center;
+  align-items:center;
+
+  height: 48px;
+  width: 48px;
+
+  border: 0;
+  border-radius:13px;
+  background:#FFD666;
+
+
+}
 aside.app-sidebar img {
   width: 48px;
 }
+
+aside.app-sidebar main
 
 aside.app-sidebar footer a,
 aside.app-sidebar footer button {

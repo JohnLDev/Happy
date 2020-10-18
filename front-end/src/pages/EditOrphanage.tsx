@@ -1,28 +1,70 @@
 // eslint-disable-next-line no-use-before-define
-import React, { FormEvent, useState, ChangeEvent } from 'react'
+import React, { FormEvent, useState, ChangeEvent, useEffect } from 'react'
 import { Map, Marker, TileLayer } from 'react-leaflet'
 
-import { FiPlus, FiX } from 'react-icons/fi'
+import { FiPlus } from 'react-icons/fi'
 
 import '../styles/pages/create-orphanage.css'
 import { Sidebar } from '../components/Sidebar'
 import happyMapIcon from '../utils/mapIcon'
 import { LeafletMouseEvent } from 'leaflet'
 import api from '../services/api'
-import { useHistory } from 'react-router-dom'
+import { useHistory, useParams } from 'react-router-dom'
 
-const CreateOrphanage: React.FC = () => {
+interface OrphanageParams {
+  id: string
+}
+
+interface Orphanage {
+  latitude: number
+  longitude: number
+  name: string
+  about: string
+  instructions: string
+  opening_hours: string
+  whatsapp: number
+  open_on_weekends: boolean
+  images: Array<{
+    path: string
+    id: number
+  }>
+}
+
+const EditOrphanage: React.FC = () => {
+  const params = useParams<OrphanageParams>()
   const history = useHistory()
   const [position, setPosition] = useState({ latitude: 0, longitude: 0 })
   const [name, setName] = useState('')
   const [about, setAbout] = useState('')
   const [instructions, setInstructions] = useState('')
   const [opening_hours, setOpeningHours] = useState('')
-  const [whatsApp, setWhatsApp] = useState('')
+  const [whatsapp, setWhatsApp] = useState('')
   const [open_on_weekends, setOpenOnWeekends] = useState(true)
   const [images, setImages] = useState<File[]>([])
   const [previewImages, setPreviewImages] = useState<string[]>([])
+  const [orphanage, setOrphanage] = useState<Orphanage>()
 
+  useEffect(() => {
+    api.get(`/orphanages/${params.id}`).then(response => {
+      setOrphanage(response.data)
+    })
+  }, [params.id])
+  useEffect(() => {
+    if (orphanage) {
+      setName(orphanage.name)
+      setAbout(orphanage.about)
+      setInstructions(orphanage.instructions)
+      setPreviewImages(orphanage.images.map(image => image.path))
+      setImages((orphanage.images as unknown) as File[])
+      setWhatsApp(String(orphanage.whatsapp))
+      setOpenOnWeekends(orphanage.open_on_weekends)
+      setOpeningHours(orphanage.opening_hours)
+      setPosition({
+        latitude: orphanage.latitude,
+        longitude: orphanage.longitude,
+      })
+    }
+  }, [orphanage])
   function handleMapClick(event: LeafletMouseEvent): void {
     const { lat, lng } = event.latlng
     setPosition({ latitude: lat, longitude: lng })
@@ -34,51 +76,43 @@ const CreateOrphanage: React.FC = () => {
     }
     const selectedImages = Array.from(event.target.files)
     setImages(selectedImages)
-
+    setImages(images)
     const selectedImagesPreview = selectedImages.map(image => {
       return URL.createObjectURL(image)
     })
     setPreviewImages([...previewImages, ...selectedImagesPreview])
   }
 
-  function handleRemoveImage(image: File, index: number): void {
-    const newImages = previewImages.slice(index - 1, 1)
-    setPreviewImages(newImages)
-
-    const finalImages = images.filter(img => img !== image)
-
-    setImages(finalImages)
-  }
+  // function handleRemoveImage(image: string): void {
+  //   const newImages = previewImages.filter(img => img === image)
+  //   setPreviewImages(newImages)
+  // }
 
   async function handleSubmit(event: FormEvent): Promise<void> {
     event.preventDefault()
 
     const { latitude, longitude } = position
-    if (latitude === 0) {
-      alert('Por favor selecione o orfanato no mapa')
-      return
+
+    const data = {
+      name,
+      about,
+      instructions,
+      opening_hours,
+      open_on_weekends,
+      whatsapp,
+      latitude,
+      longitude,
     }
-    const data = new FormData()
 
-    data.append('name', name)
-    data.append('about', about)
-    data.append('latitude', String(latitude))
-    data.append('longitude', String(longitude))
-    data.append('instructions', instructions)
-    data.append('opening_hours', opening_hours)
-    data.append('whatsapp', whatsApp)
-    data.append('open_on_weekends', String(open_on_weekends))
-    images.forEach(image => {
-      data.append('images', image)
-    })
-    await api.post('/orphanages', data)
+    await api.put(`/orphanages/editorphanage/${params.id}`, data)
+    alert('Cadastro atualizado com sucesso')
 
-    history.push('/created')
+    history.push('/adminpage')
   }
 
   return (
     <div id='page-create-orphanage'>
-      <Sidebar admin={false} />
+      <Sidebar admin={true} />
       <main>
         <form onSubmit={handleSubmit} className='create-orphanage-form'>
           <fieldset>
@@ -131,20 +165,8 @@ const CreateOrphanage: React.FC = () => {
               <label htmlFor='images'>Fotos</label>
 
               <div className='images-container'>
-                {images.map((image, index) => {
-                  return (
-                    <div key={(image as unknown) as string}>
-                      <img src={URL.createObjectURL(image)} alt={name}></img>
-                      <button
-                        className='removeButton'
-                        onClick={() => {
-                          handleRemoveImage(image, index)
-                        }}
-                      >
-                        <FiX color='#FF669D' size={20} />
-                      </button>
-                    </div>
-                  )
+                {previewImages.map(image => {
+                  return <img key={image} src={image} alt={name}></img>
                 })}
                 <label htmlFor='image[]' className='new-image'>
                   <FiPlus size={24} color='#15b6d6' />
@@ -165,8 +187,8 @@ const CreateOrphanage: React.FC = () => {
             <div className='input-block'>
               <label htmlFor='instructions'>Instruções</label>
               <textarea
-                style={{ border: instructions ? '1px solid #A1E9C5' : '0' }}
                 id='instructions'
+                style={{ border: instructions ? '1px solid #A1E9C5' : '0' }}
                 value={instructions}
                 onChange={({ target: { value } }) => setInstructions(value)}
               />
@@ -185,12 +207,11 @@ const CreateOrphanage: React.FC = () => {
             <div className='input-block'>
               <label htmlFor='whatsapp'>WhatsApp</label>
               <input
-                style={{ border: whatsApp ? '1px solid #A1E9C5' : '0' }}
+                style={{ border: whatsapp ? '1px solid #A1E9C5' : '0' }}
                 id='whatsapp'
-                value={whatsApp}
+                value={whatsapp}
                 onChange={({ target: { value } }) => setWhatsApp(value)}
                 type='number'
-                maxLength={11}
               />
             </div>
 
@@ -224,4 +245,4 @@ const CreateOrphanage: React.FC = () => {
     </div>
   )
 }
-export default CreateOrphanage
+export default EditOrphanage

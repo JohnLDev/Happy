@@ -46,7 +46,7 @@ const Orphanage: React.FC = () => {
   }
   return (
     <div id='page-orphanage'>
-      <Sidebar />
+      <Sidebar admin={false} />
 
       <main>
         <div className='orphanage-details'>

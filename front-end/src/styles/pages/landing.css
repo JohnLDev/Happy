@@ -6,7 +6,16 @@
  justify-content: center;
  align-items: center;
 }
-
+#page-landing .content{
+  display: flex;
+  justify-content:space-between;
+  align-items: center;
+  width: 40%;
+}
+#page-landing .content .content-info{
+  display: flex;
+  flex-direction: column;
+}
 #page-landing .content-wrapper{
   width: 100%;
   max-width: 1100px;
@@ -68,4 +77,25 @@
 }
 .content-wrapper .enter-app:hover{
   background: #96feff;
+}
+.content-wrapper .restrict{
+
+
+
+
+  width: 222px;
+  height: 56px;
+  background: #12D4E0;
+  border-radius: 20px;
+
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  transition:  0.2s;
+  text-decoration: none;
+  color: #fff;
+}
+.content-wrapper .restrict:hover{
+  background: #96FEFF;
+  color: #15C3D6;
 }
