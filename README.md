@@ -5,7 +5,7 @@
 <p align="center">Leve felicidade para o mundo, visite orfanatos e mude o dia de muitas crianças. NLW#3</p>
 
 <h4 align="center"> 
-	🚧  Em construção...  🚧
+	🚧  ReadMe em construção...  🚧
 </h4>
 
 <p align="center">
@@ -32,9 +32,14 @@ Este projeto foi construído durante a terceira edição do evento Next Level We
 ### Web
 
 <p align="center">
-  <img alt="Happy Web" title="Happy Web" src="./assets/landing.png" width="1000px">
+  <img alt="Happy Web" title="Happy Web" src="./ReadmeImages/landing.png" width="1000px">
 
-  <img alt="Happy Web" title="Happy Web" src="./assets/orph-map.png" width="1000px">
+  <img alt="Happy Web" title="Happy Web" src="./ReadmeImages/map.png" width="1000px">
+  <img alt="Happy Web" title="Happy Web" src="./ReadmeImages/create-orphanage.png" width="1000px">
+  <img alt="Happy Web" title="Happy Web" src="./ReadmeImages/orfanato-criado.png" width="1000px">
+  <img alt="Happy Web" title="Happy Web" src="./ReadmeImages/acesso-restrito.png" width="1000px">
+  <img alt="Happy Web" title="Happy Web" src="./ReadmeImages/adminpanel1.png" width="1000px">
+  <img alt="Happy Web" title="Happy Web" src="./ReadmeImages/adminpanel2.png" width="1000px">
 </p>
 
 ---

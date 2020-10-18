@@ -6,6 +6,7 @@ const userRouter = Router()
 
 userRouter.post('/login', UsersControler.login)
 userRouter.post('/signup', UsersControler.signup)
+userRouter.post('/passwordrecovery', UsersControler.recovery)
 userRouter.post('/', ensureAuthenticated, (request, response) => {
   return response.json({ message: 'Logged in' })
 })
