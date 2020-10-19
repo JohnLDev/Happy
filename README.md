@@ -1,5 +1,6 @@
 <h1 align="center" >
-  <img alt="happy" title="happy" src="./front-end/src/images/Logo.svg" /> 2.0
+  
+  <img alt="happy" title="happy" src="./front-end/src/images/Logo.svg" />
 </h1>
 
 <p align="center">Leve felicidade para o mundo, visite orfanatos e mude o dia de muitas crianças. NLW#3</p>
@@ -48,6 +49,8 @@ Este projeto foi construído durante a terceira edição do evento Next Level We
   <img alt="Happy Web" title="Happy Web" src="./ReadmeImages/adminpanel2.png" width="1000px">
 </p>
 <br>
+
+
 ## 👌 Funcionalidades
 
 
