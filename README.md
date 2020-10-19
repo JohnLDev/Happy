@@ -1,5 +1,5 @@
 <h1 align="center" >
-  <img alt="happy" title="happy" src="./front-end/src/images/Logo.svg" />
+  <img alt="happy" title="happy" src="./front-end/src/images/Logo.svg" /> 2.0
 </h1>
 
 <p align="center">Leve felicidade para o mundo, visite orfanatos e mude o dia de muitas crianças. NLW#3</p>
@@ -32,18 +32,55 @@ Este projeto foi construído durante a terceira edição do evento Next Level We
 ### Web
 
 <p align="center">
+                                Landing
   <img alt="Happy Web" title="Happy Web" src="./ReadmeImages/landing.png" width="1000px">
-
+                                Map Page
   <img alt="Happy Web" title="Happy Web" src="./ReadmeImages/map.png" width="1000px">
+                                Criação de orfanatos
   <img alt="Happy Web" title="Happy Web" src="./ReadmeImages/create-orphanage.png" width="1000px">
+                                Tela de confirmação
   <img alt="Happy Web" title="Happy Web" src="./ReadmeImages/orfanato-criado.png" width="1000px">
+                                Tela de login
   <img alt="Happy Web" title="Happy Web" src="./ReadmeImages/acesso-restrito.png" width="1000px">
+                                Painel de admin
   <img alt="Happy Web" title="Happy Web" src="./ReadmeImages/adminpanel1.png" width="1000px">
+                                Painel de admin
   <img alt="Happy Web" title="Happy Web" src="./ReadmeImages/adminpanel2.png" width="1000px">
 </p>
+<br>
+## 👌 Funcionalidades
 
+
+* Dashboard visual e interativa para receber o usuário
+*  Login
+   *  Usuarios administradores possuem cedenciais para acessar o painel de administrador 
+   * Usuarios administradores podem deletar, editar e aprovar orfanatos cadastrados
+   * Usuarios administradores podem recuperar sua senha de login através do email
+* Pagina com mapa de orfanatos para o usuario acessar a localidade e detalhes dos orfanatos
+    *  Usuarios também podem entrar em contato via whatsapp diretamente com o orfanato
+<br>
 ---
 
+### Mobile
+<p align="center">
+                               
+  <img alt="Happy Web" title="Happy Web" src="./ReadmeImages/Mobile1.png"  width="200px" height="400px">
+                                
+  <img alt="Happy Web" title="Happy Web" src="./ReadmeImages/mobile2.png" width="200px" height="400px">
+                               
+  <img alt="Happy Web" title="Happy Web" src="./ReadmeImages/mobile3.png" width="200px" height="400px">
+   <img alt="Happy Web" title="Happy Web" src="./ReadmeImages/mobile4.png" width="200px" height="400px">
+    <img alt="Happy Web" title="Happy Web" src="./ReadmeImages/mobile5.png" width="200px" height="400px">
+     <img alt="Happy Web" title="Happy Web" src="./ReadmeImages/mobile6.png" width="200px" height="400px">
+</p>
+---
+
+## 👌 Funcionalidades
+
+* Pagina com mapa de orfanatos para o usuario acessar a localidade e detalhes dos orfanatos
+* Usuarios podem criar novos orfanatos informando os campos necessários
+*  Usuarios também podem entrar em contato via whatsapp diretamente com o orfanato
+---
 ## 💻 Executando o Happy
 
 ### Pré-requisitos
@@ -51,8 +88,27 @@ Este projeto foi construído durante a terceira edição do evento Next Level We
 É necessário ter instalado na sua máquina para execução desse projeto:
 - NodeJS
 - Gerenciador de pacotes (Npm ou Yarn) 
+- Banco de dados postgreSQL(Local ou através de docker)
+  - caso opte por instalar o docker este é um tutorial de instalação      
+   [![Docker](https://www.ortussolutions.com/__media/logos/docker.png)](https://www.notion.so/Instala-o-do-Docker-8230846ae2c547b2988f2aca91fc1edf)
+  - Com o docker instalado será necessário criar um container postgreSQL através do comando 
+  ```bash 
 
-> Em breve mais detalhes...
+    $ docker run --name nome -e POSTGRES_PASSWORD=senha -p 5432:5432  -d postgres
+
+    ```
+    - O retorno será o id do container criado e isso indica que tudo está funcionando 
+    - Agora será preciso acessar o banco de dados através de um software adequado (Beekeeper studio,DBeaver) e criar um banco de dados que sera usado no .env
+  
+- Para rodar a aplicação mobile será necessário um emulador de android ou dispositivo físico
+    - Emulador digitar o comando abaixo
+    ```bash 
+
+    $ adb reverse tcp:3333 tcp:3333
+
+    ```
+     - Para utilizar dispositivo físico será necessário alterar a base urç da api em /mobile/src/service/api.ts para o ip de sua maquina na rede 
+          - esse ip pode ser pego na aba connection do expo
 
 ### ♊ Clonando o Repositório
 
@@ -94,7 +150,7 @@ $ yarn start
 
 # ou, caso use npm
 
-$ npm start
+$ npm run start
 
 ```
 
@@ -105,27 +161,88 @@ Caso queira, vá para a seção do <a href="#-mapbox">Mapbox</a>.
 
 ### 🌐 Rodando o Servidor
 
-### Antes de começar
+Entre na pasta
 
-1. Instale o postgresSQL localmente(Não recomendado) ou através do docker(Recomendado);
-  *  Caso opte por instalar o docker este é um tutorial de instalação para todos os sistemas operacionais;
+```bash
 
-  [![Docker](https://www.ortussolutions.com/__media/logos/docker.png)](https://www.notion.so/Instala-o-do-Docker-8230846ae2c547b2988f2aca91fc1edf)
+$ cd back-end
 
+```
+Instale as dependências
 
-3. Com o docker instalado será necessário criar um container para isso devemos digitar no terminal:
-`docker run --name nome_do_container -e POSTGRES_PASSWORD=senha_que_será_usada_no_.env -p 5432:5432  -d postgres`
-o retorno será o nome do container caso o comando tenha sucesso;
-4. Com o container criado, o proximo passo é acessar o banco de dados através de um software de sua escolha(recomendo dbeaver) e criar uma database e guarde o nome pois ele será utilizado no .env
-5. Agora com o repositório clonado você deverá criar um arquivo .env na raiz do projeto utilizando como exemplo o arquivo .env-exemple;
-6. Instale as dependências utilizando o npm ou o yarn: `npm install` ou ` yarn`;
-7. Vamos rodar as migrações para deixar seu banco de dados no formato correto, digite no console:
- `yarn typeorm migration:run` ou `npm run dev:server` e todas as migrações devem ser rodadas e está tudo pronto para os testes.
-8. Por ultimo, é só iniciar a api digitando no console:`yarn dev:server` ou `npm run dev:server
+```bash
+
+$ yarn
+
+# ou, caso use npm
+
+$ npm install
+
+```
+
+- Nesse momento crie um arquivo .env na raiz do projeto e o preencha com os dados do seu banco de dados utilizando o arquivo .env-example como exemplo
+
+Modele o banco de dados
+
+```bash
+
+$ yarn typeorm migration:run
+
+# ou, caso use npm
+
+$ npm run typeorm migration:run
+
+```
+
+Rode o servidor
+
+```bash
+
+$ yarn dev:server
+
+# ou, caso use npm
+
+$ npm run dev:server
+
+```
+
 
 ### 📱 Rodando o Happy mobile 
 
-> Em breve...
+
+Entre na pasta
+
+```bash
+
+$ cd mobile
+
+```
+Instale as dependências
+
+```bash
+
+$ yarn
+
+# ou, caso use npm
+
+$ npm install
+
+```
+
+Rode a aplicação
+
+```bash
+
+$ yarn start
+
+# ou, caso use npm
+
+$ npm run start
+
+```
+
+- Dentro do disposivo será necessário utilizar o ip disponibilizado pelo expo para a conexção com app
+
 
 <br>
 
@@ -152,7 +269,16 @@ Se você fez tudo corretamente, estás usando a API do mapbox com seu Token na p
 As ferramentas usadas no desenvolvimento do projeto.
 
 #### Backend:
-> Em breve...
+- Typescript
+- NodeJS
+- Express
+- PostgreSQL
+- TypeORM
+- Yup
+- Nodemailer
+- Multer
+- JsonWebToken
+- Bcriptjs
 
 #### Web
 - Typescript
@@ -161,8 +287,14 @@ As ferramentas usadas no desenvolvimento do projeto.
 - React Icons
 - Leaflet 🍃
 - API do Mapbox 🗺️
+- Axios
 
 #### Mobile:
-> Em breve...
+- Typescript
+- React Native
+- Expo
+- Axios
+- React Native Maps
+- React Navegation
 
 ---
